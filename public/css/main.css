@@ -1,0 +1,25 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #696969;
+    background-color: #feca57;
+}
+
+.login-container {
+    height: 300px;
+    width: 500px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+
+    background-color: #FFFFFF;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.login-link {
+    position: absolute;
+    bottom: 10px;
+    left: 25%;
+}
