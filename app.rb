@@ -41,11 +41,40 @@ class Messenger < Sinatra::Base
             redirect('/login')
         else
             @user = session[:user]
+            @posts = User.get_posts(@user.id)
             erb(:home)
         end
     end
 
+    post ('/posts') do 
+        redirect('/login') if !session[:user]
+            
+        @user = session[:user]
+        message = params[:message]
+        User.create_post(@user.id, message)
+        redirect('/home')
+    end
+
+    get ('/delete/:id') do 
+        redirect('/login') if !session[:user]
+
+        User.delete_post(params[:id])
+        redirect('/home')
+    end
+
+    get ('/users') do
+        redirect('/login') if !session[:user]
+
+        @users = User.get_users(session[:user].id)
+        erb(:users)
+    end
+    
     get ('/oops') do 
         "Oops"
+    end
+
+    get ('/logout') do 
+        session.clear
+        redirect('/login')
     end
 end

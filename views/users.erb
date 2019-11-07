@@ -1,0 +1,19 @@
+<h1>Messenger</h1>
+<nav class="navigation">
+    <ul class="navigation-list">
+        <li class="navigation-list-item"><a class="navigation-list-link" href="/home">Home</a></li>
+        <li class="navigation-list-item"><a class="navigation-list-link" href="#0">View followers</a></li>
+        <li class="navigation-list-item"><a class="navigation-list-link" href="#0">View following</a></li>
+    </ul>
+</nav>
+
+<div class="posts-container">    
+    <% @users.each do |user| %>
+        <div class="post-container">
+            <div class="flex-user">
+                <p class="post-header"><%= user.email %>
+                <a href="/follow/<%= user.id %>">Follow</a>
+            </div>
+        </div>
+    <% end %>
+</div>

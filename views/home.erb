@@ -1,1 +1,33 @@
-<h1><%= @user.email %></h1>
+<div>
+    <h1>Messenger</h1>
+    <nav class="navigation">
+        <ul class="navigation-list">
+            <li class="navigation-list-item"><a class="navigation-list-link" href="/users">View users</a></li>
+            <li class="navigation-list-item"><a class="navigation-list-link" href="#0">View followers</a></li>
+            <li class="navigation-list-item"><a class="navigation-list-link" href="#0">View following</a></li>
+        </ul>
+    </nav>
+
+    <div class="user-container" >
+        <p class="user-text"><%= @user.email %></p>
+        <a class="user-text" href="/logout">Log out</a>
+    </div>
+
+    <div class="post-create-container">
+        <form action="/posts" method="POST" class="post-container">
+            <p>Create post</p>
+            <textarea class="input-textarea" name="message"></textarea>
+            <input class="input-submit input-post" type="submit" value="Post">
+        </form>
+    </div>
+
+    <div class="posts-container">    
+        <% @posts.each do |post| %>
+            <div class="post-container">
+                <a class="post-delete" href="/delete/<%= post.id%>">X</a>
+                <p class="post-header"><%= post.user %>
+                <p class="post-text"><%= post.message %></p>
+            </div>
+        <% end %>
+    </div>
+</div>
